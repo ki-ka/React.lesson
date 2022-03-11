@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { ColoredMessage } from "./componemts/ColoredMessage";
 
 const App = () => {
-  const onClickButton = () => alert();
+  console.log("最初に");
+  const [num, setNum] = useState(0);
+  const [faceShowFlag, setFaceShowFlag] = useState(true);
+
+  const onClickCountUp = () => {
+    setNum(num + 1);
+  };
+  const onClickSwitchShowFlag = () => {
+    setFaceShowFlag(!faceShowFlag);
+  };
+
   return (
     <>
       <ColoredMessage color="green" fontSize="18px">
@@ -10,7 +20,11 @@ const App = () => {
       </ColoredMessage>
       <ColoredMessage color="blue">お元気ですか</ColoredMessage>
       <ColoredMessage color="pink">元気です</ColoredMessage>
-      <button onClick={onClickButton}>ボタン</button>
+      <button onClick={onClickCountUp}>カウントアップ</button>
+      <br />
+      <button onClick={onClickSwitchShowFlag}>on/off</button>
+      <p>{num}</p>
+      {faceShowFlag && <p>???</p>}
     </>
   );
 };
